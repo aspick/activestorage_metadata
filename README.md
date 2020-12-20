@@ -18,6 +18,8 @@ And then execute:
 
 ## Usage
 
+Set metadata with `attach` method (see a sample rails app on `/sample`).
+
 ```ruby
 @article = Article.create(create_params.slice(:title, :content))
 attachable = create_params[:image]
@@ -33,4 +35,16 @@ attachable = create_params[:image]
 )
 ```
 
-See a sample rails app on `/sample`.
+```sh
+$ aws s3api head-object --key $key --bucket $bucket
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "Sun, 20 Dec 2020 08:54:33 GMT",
+    "ContentLength": 214448,
+    "ETag": "\"ba5da3176b2eea69226725613b288704\"",
+    "ContentType": "image/gif",
+    "Metadata": {
+        "article_id": "25"
+    }
+}
+```
