@@ -18,6 +18,17 @@ And then execute:
 
 ## Usage
 
+Update service name on `storage.yml` file to `S3WithMetadata`.
+```yaml
+amazon:
+  service: S3WithMetadata
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  region: <%= region %> 
+  bucket: <%= bucket %>
+```
+
+
 Set metadata with `attach` method (see a sample rails app on `/sample`).
 
 ```ruby
